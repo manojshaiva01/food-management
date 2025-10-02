@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Receiver Dashboard - Extra Food Donation Management</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+</head>
+<body>
+    <header>
+        <h1>Receiver Dashboard</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Set Your Location</h2>
+            <div class="form-group">
+                <label for="receiverLocation">Location:</label>
+                <input type="text" id="receiverLocation" readonly placeholder="Click on the map to set location" />
+                <div id="receiverMap" style="height: 300px; margin-top: 10px;"></div>
+            </div>
+        </section>
+        <section>
+            <h2>Available Donations</h2>
+            <ul id="availableDonations"></ul>
+        </section>
+        <p><a href="#" id="logout">Logout</a></p>
+    </main>
+    <footer>
+        <p>&copy; 2023 Extra Food Donation Management</p>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
