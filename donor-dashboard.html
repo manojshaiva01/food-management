@@ -11,6 +11,7 @@
 </head>
 <body>
     <header>
+        <a href="home.html" class="back-top-left">Back</a>
         <h1>Donor Dashboard</h1>
     </header>
     <main>
@@ -36,6 +37,7 @@
 <input type="text" id="location" required placeholder="e.g. New York" />
                     <div id="map" style="height: 300px; margin-top: 10px;"></div>
                 </div>
+
                 <button type="submit" class="btn-post">Post Donation</button>
             </form>
         </section>
@@ -43,7 +45,10 @@
             <h2>My Donations</h2>
             <div id="donationsList" class="donations-grid"></div>
         </section>
-        <p><a href="#" id="logout">Logout</a></p>
+        <section>
+            <h2>Notifications</h2>
+            <div id="notificationsList" class="notifications-list"></div>
+        </section>
     </main>
     <footer>
         <p>&copy; 2023 Extra Food Donation Management</p>

@@ -10,22 +10,18 @@
 </head>
 <body>
     <header>
+        <a href="home.html" class="back-top-left">Back</a>
         <h1>Receiver Dashboard</h1>
     </header>
     <main>
         <section>
-            <h2>Set Your Location</h2>
-            <div class="form-group">
-                <label for="receiverLocation">Location:</label>
-                <input type="text" id="receiverLocation" readonly placeholder="Click on the map to set location" />
-                <div id="receiverMap" style="height: 300px; margin-top: 10px;"></div>
-            </div>
+            <h2>Available Donations</h2>
+            <div id="availableDonations" class="donations-grid"></div>
         </section>
         <section>
-            <h2>Available Donations</h2>
-            <ul id="availableDonations"></ul>
+            <h2>My Claims</h2>
+            <div id="myClaims" class="donations-grid"></div>
         </section>
-        <p><a href="#" id="logout">Logout</a></p>
     </main>
     <footer>
         <p>&copy; 2023 Extra Food Donation Management</p>
