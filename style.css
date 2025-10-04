@@ -186,6 +186,15 @@ li {
     background: #218838;
 }
 
+.delete-btn {
+    background-color: red !important;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: darkred !important;
+}
+
 /* Home page styles */
 .role-buttons {
     display: flex;

@@ -190,6 +190,7 @@ function createNotification(type, donorId, donationId, receiverName, receiverPho
         receiverName,
         receiverPhone,
         receiverLocation,
+        message: `Your donation has been claimed by ${receiverName} at ${receiverLocation}. Phone: ${receiverPhone}`,
         createdAt: new Date().toISOString(),
         read: false
     };
@@ -209,14 +210,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const registerForm = document.getElementById('registerForm');
         registerForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
-        // Removed userType as per user request
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const userType = document.getElementById('userType').value;
         const location = document.getElementById('location').value.trim();
         const phoneNumber = document.getElementById('phoneNumber').value.trim();
 
-        if (!name || !email || !password || !location || !phoneNumber) {
+        if (!name || !email || !password || !userType || !location || !phoneNumber) {
             alert('Please fill in all fields.');
             return;
         }
@@ -232,6 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name,
             email,
             password,
+            userType,
             location,
             phoneNumber
         };
@@ -259,7 +261,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             localStorage.setItem('loggedInUser', JSON.stringify(user));
-            window.location.href = 'home.html';
+            if (user.userType === 'donor') {
+                window.location.href = 'donor-home.html';
+            } else if (user.userType === 'receiver') {
+                window.location.href = 'receiver-home.html';
+            } else {
+                window.location.href = 'home.html'; // fallback
+            }
         });
     }
 
@@ -483,6 +491,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const deleteBtn = document.createElement('button');
             deleteBtn.textContent = 'Delete';
+            deleteBtn.className = 'delete-btn';
             deleteBtn.addEventListener('click', () => {
                 let allNotifications = getNotifications();
                 allNotifications = allNotifications.filter(n => n.id !== notification.id);
@@ -508,6 +517,11 @@ document.addEventListener('DOMContentLoaded', function() {
         renderNotifications();
         renderAvailableDonations();
         renderMyClaims();
+
+        // Poll for notifications update every 5 seconds
+        setInterval(() => {
+            renderNotifications();
+        }, 5000);
 
         // Logout
         document.getElementById('logout').addEventListener('click', function (e) {
